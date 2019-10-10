@@ -44,7 +44,7 @@ The main tasks for this exercise are as follows:
 
 #### Task 1: Open the Cloud Shell
 
-**Get set up with the right subscription in the Azure Cloud Shell**
+**Set subscription in the Azure Cloud Shell**
 
 1. At the top of the portal, click the **Cloud Shell** icon to open the Cloud Shell pane.
 

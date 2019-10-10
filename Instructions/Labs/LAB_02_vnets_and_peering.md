@@ -4,7 +4,7 @@ lab:
     module: 'Module 2: Azure Networks'
 ---
     
-# Lab 02: Azure Cloud Shell CLI Intro - Create Resource Groups
+# Lab 02: Azure Virtual Networks and Peering
 
 # Student lab manual
 
