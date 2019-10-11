@@ -3,12 +3,12 @@ lab:
     title: 'Creating Resource Groups'
     module: 'Module 1: Azure Administration'
 ---
-    
+
 # Lab 01: Creating Resource Groups
 
 An Azure Cloud Shell CLI Introduction
 
-# Student lab manual
+## Student lab manual
 
 ## Scenario
 

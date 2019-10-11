@@ -6,7 +6,7 @@ lab:
     
 # Lab 02: Azure Virtual Networks and Peering
 
-# Student lab manual
+## Student lab manual
 
 ## Scenario
 
