@@ -81,7 +81,7 @@ az group create --location westus --name WestRG --output table
 2. At the **Cloud Shell** command prompt, type in the following command to list available resource groups in the westus region.
 
 ```bash
-az group list --location westus
+az group list --output table
 ```
 
 3. Verify the newly created WestRG is listed
@@ -97,7 +97,7 @@ az group create --location eastus --name EastRG --output table
 2. At the **Cloud Shell** command prompt, type in the following command to list available resource groups in the eastus region.
 
 ```bash
-az group list --location eastus
+az group list --output table
 ```
 
 3. Verify the newly created EastRG is listed
