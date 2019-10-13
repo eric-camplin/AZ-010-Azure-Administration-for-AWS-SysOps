@@ -4,7 +4,7 @@ lab:
     module: 'Module 3: Azure Compute'
 ---
     
-# Lab 03A: Azure Compute
+# Lab 03: Azure Compute
 
 ## Student lab manual
 
