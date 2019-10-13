@@ -52,8 +52,6 @@ The main tasks for this exercise are as follows:
 
 1. At the **Cloud Shell** command prompt, type in the following command and press **Enter** to list all subscriptions associated with the account used for your portal sign in.
 
-list subscriptions
-
 ```bash
 az account list --output table
 ```
