@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Azure VMs, g'
+    title: 'Azure VM, Traffic Manager and Scale Set'
     module: 'Module 3: Azure Compute'
 ---
     
@@ -10,7 +10,7 @@ lab:
 
 ## Scenario
 
-In this lab you will use CLI commands in the Cloud Shell with the Bash interface to administer Virtual Networks (VNet). You will create VNets that span resource groups and regions, as well as configure VNet peering.
+In this lab you will use CLI commands in the Cloud Shell with the Bash interface to administer Azure Windows and Debian VMs within an Availability Set and Configure Traffic Manager. Also, the Lab will create an Ubuntu Scale Set with an optional test to demonstrate scaling in and scaling out.
 
 ## Objectives
 
@@ -19,10 +19,11 @@ After you complete this lab, you will be able to use the Azure CLI to:
 * Create a Scale Set
 * Create and configure Windows and Linux VMs
 * Configure Traffic Manager with your VMs
+* Configure an Ubuntu Scale Set
 
 ## Lab Setup
 
-* **Estimated time**: 60 Minutes
+* **Estimated time**: 70 Minutes
 
 ## Instructions
 
@@ -34,18 +35,18 @@ After you complete this lab, you will be able to use the Azure CLI to:
     1. Module 1: Azure Administration - **Lab: Creating Resource Groups**. EastRG and WestRG resource groups configured.
     1. Module 2: Azure Networking - **Lab: Virtual Networks and Peering**. VNets with SubNets and peering configured.
 
-### Exercise 1: Create Virtual Networks with SubNets
+### Exercise 1: Create VMs configured with traffic manager within availability sets
 
 The main tasks for this exercise are as follows:
 
-1. Create a scale set
+1. Create an availability set
 1. Create a Windows virtual machine
 1. Create Linux Debian virtual machines
 1. Apply Traffic Manager to VMs
 
 #### Task 1: Create Windows virtual machine
 
-* Create a Scale Set
+* Create an availability set
 * Create Windows Server 2016 DataCenter VM
 * Configure as WebServer
 
@@ -61,7 +62,7 @@ location='westus'
 adminUserName='azuser'
 adminPassword='UniqueP@$$w0rd-Here' # make unique
 vmName='WestWinVM'
-vmSize='Standard_DS2_v2'
+vmSize='Standard_D1'
 availabilitySet='WestAS'
 ```
 
@@ -126,8 +127,10 @@ az vm extension set --publisher Microsoft.Compute \
 
 ```bash
 az vm extension set --publisher Microsoft.Compute \
---version 1.8 --name CustomScriptExtension \
---vm-name $vmName --resource-group $resourceGroupName \
+--version 1.8 \
+--name CustomScriptExtension \
+--vm-name $vmName \
+--resource-group $resourceGroupName \
 --settings '{"commandToExecute":"powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools"}'
 ```
 
@@ -168,6 +171,7 @@ Machine 2: **EastDebianVM**
 ```bash
 az vm create \
 --image credativ:Debian:8:latest \
+--size 'Standard_D1' \
 --admin-username azuser \
 --resource-group WestRG \
 --vnet-name WestVNet \
@@ -199,6 +203,7 @@ az vm availability-set create --name EastAS --resource-group EastRG
 ```bash
 az vm create \
 --image credativ:Debian:8:latest \
+--size 'Standard_D1' \
 --admin-username azuser \
 --resource-group EastRG \
 --vnet-name EastVNet \
@@ -215,7 +220,7 @@ az vm create \
 
 ```bash
 myRand=`head /dev/urandom | tr -dc a-z0-9 | head -c 6 ; echo ''`
-echo "the random string append will be  "$myRand
+echo "the random string append will be:  "$myRand
 ```
 
 **Configure DNS**
@@ -295,7 +300,7 @@ ping <PRIVATE IP address of eastdebianvm>
 ```bash
 myRand=`head /dev/urandom | tr -dc a-z0-9 | head -c 6 ; echo ''`
 
-echo "the random string append will be  "$myRand
+echo "the random string append will be:  "$myRand
 
 az network traffic-manager profile create \
   --name debianvmtm \
@@ -320,7 +325,15 @@ az network traffic-manager endpoint create \
 
 2. View the Traffic Manager Configuration in the Portal.
 
-#### Task 6: Create Ubuntu Scale Set
+### Exercise 2: Create and Test an Ubuntu Scale Set
+
+The main tasks for this exercise are as follows:
+
+1. Create Ubuntu scale set and autoscale profile
+1. Create autoscale out and autoscale in rules
+1. Test Ubuntu Scale Set (optional)
+
+#### Task 1: Create Ubuntu Scale Set
 
 **Create a scale set resource group**
 
@@ -394,7 +407,7 @@ az monitor autoscale rule create \
 
 > *Note: "scale in" can occur in as little as 2 minutes so result below is expected to differ over the first few minutes*
 
-#### Task 7: Test Ubuntu Scale Set (optional task)
+#### Task 2: Test Ubuntu Scale Set (optional task)
 
 > This Task will generate CPU load on a sever as a test to demonstrate the scale set behavior.
 
