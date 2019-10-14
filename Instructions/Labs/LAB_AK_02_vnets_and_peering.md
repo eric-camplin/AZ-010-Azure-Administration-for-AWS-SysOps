@@ -20,7 +20,7 @@
 
 # ----------START----------
 
-echo ----Creating WestVNet and WestSubNet1----
+# ----Creating WestVNet and WestSubNet1----
 az network vnet create \
   --resource-group WestRG \
   --name WestVNet \
@@ -28,11 +28,11 @@ az network vnet create \
   --subnet-name WestSubnet1 \
   --subnet-prefix 10.1.0.0/24
 
-echo ----Verify WestVNet and WestSubNet1 created----
+# ----Verify WestVNet and WestSubNet1 created----
 az network vnet subnet list --resource-group WestRG \
 --vnet-name WestVNet --output table
 
-echo ----Creating EastVNet and EastSubNet1----
+# ----Creating EastVNet and EastSubNet1----
 az network vnet create \
   --resource-group EastRG \
   --name EastVNet \
@@ -40,21 +40,21 @@ az network vnet create \
   --subnet-name EastSubnet1 \
   --subnet-prefix 10.2.0.0/24
 
-echo ----Creating EastSubNet2 on EastVNet----
+# ----Creating EastSubNet2 on EastVNet----
 az network vnet subnet create \
   --resource-group EastRG \
   --vnet-name EastVNet \
   --name EastSubnet2 \
   --address-prefix 10.2.1.0/24
 
-echo ----Verify EastVNet created----
+# ----Verify EastVNet created----
 az network vnet list --output table
 
-echo ----Verify EastVNet SubNets were created----
+# ----Verify EastVNet SubNets were created----
 az network vnet subnet list --resource-group EastRG --vnet-name EastVNet --output table
 
-echo ------START Network Peering West to East------
-echo ----Capture EastVNet ID in a variable----
+# ------START Network Peering West to East------
+# ----Capture EastVNet ID in a variable----
 EastVNetId=$(az network vnet show \
   --resource-group EastRG \
   --name EastVNet \
@@ -62,7 +62,7 @@ EastVNetId=$(az network vnet show \
 
   echo "EastVNetId = " $EastVNetId
 
-echo ----Peer West to East----
+# ----Peer West to East----
 az network vnet peering create \
   --name WesttoEastPeering \
   --resource-group WestRG \
@@ -70,14 +70,14 @@ az network vnet peering create \
   --remote-vnet $EastVNetId \
   --allow-vnet-access
 
-echo ----Verify state of peering----
+# ----Verify state of peering----
 az network vnet peering list \
   --resource-group WestRG \
   --vnet-name WestVNet \
   --output table
 
-echo ------START Network Peering West to East------
-echo ----Capture WestVNet ID in a variable----
+# ------START Network Peering West to East------
+# ----Capture WestVNet ID in a variable----
 WestVNetId=$(az network vnet show \
   --resource-group WestRG \
   --name WestVNet \
@@ -85,7 +85,7 @@ WestVNetId=$(az network vnet show \
   
 echo "WestVNetId = " $WestVNetId
 
-echo ----Peer East to West----
+# ----Peer East to West----
 az network vnet peering create \
   --name EasttoWestPeering \
   --resource-group EastRG \
@@ -93,7 +93,7 @@ az network vnet peering create \
   --remote-vnet $WestVNetId \
   --allow-vnet-access
 
-echo ----Verify state of peering----
+# ----Verify state of peering----
 az network vnet peering list \
   --resource-group EastRG \
   --vnet-name EastVNet \
