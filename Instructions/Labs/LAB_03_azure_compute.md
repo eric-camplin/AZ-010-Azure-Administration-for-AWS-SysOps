@@ -56,7 +56,7 @@ The main tasks for this exercise are as follows:
 
 > **Note**: create a Unique Password and write it down
 
-```bash
+```sh
 resourceGroupName='WestRG'
 location='westus'
 adminUserName='azuser'
@@ -70,7 +70,7 @@ availabilitySet='WestAS'
 
 1. Type in the following command to create the **WestAS** Availability Set.
 
-```bash
+```sh
 az vm availability-set create \
   --name $availabilitySet \
   --resource-group $resourceGroupName \
@@ -81,7 +81,7 @@ az vm availability-set create \
 
 1. Type in the following command to create the **WestWinVM** Windows Server VM.
 
-```bash
+```sh
 az vm create --name $vmName --resource-group $resourceGroupName \
   --image win2016datacenter \
   --admin-username $adminUserName \
@@ -95,7 +95,7 @@ az vm create --name $vmName --resource-group $resourceGroupName \
 
 1. Type in the following command to open ports in the WestWinVM.
 
-```bash
+```sh
 az vm open-port -g WestRG -n $vmName --port 80 --priority 1500
 az vm open-port -g WestRG -n $vmName --port 3389 --priority 2000
 ```
@@ -114,7 +114,7 @@ az vm open-port -g WestRG -n $vmName --port 3389 --priority 2000
 
 > **Note**: If Cloud shell has timed out you may need to refresh the variables from Task 1.
 
-```bash
+```sh
 az vm extension set --publisher Microsoft.Compute \
 --version 1.8 --name CustomScriptExtension \
 --vm-name $vmName --resource-group $resourceGroupName \
@@ -125,7 +125,7 @@ az vm extension set --publisher Microsoft.Compute \
 
 1. Type in the following command to Install IIS sending a PowerShell command to the WestWinVM Windows Server.
 
-```bash
+```sh
 az vm extension set --publisher Microsoft.Compute \
 --version 1.8 \
 --name CustomScriptExtension \
@@ -138,7 +138,7 @@ az vm extension set --publisher Microsoft.Compute \
 
 1. Type in the following command to capture the WestWSinVM public IP address.
 
-```bash
+```sh
 az vm show -d -g $resourceGroupName -n $vmName --query publicIps -o tsv
 
 echo "Paste above IP address in browser to see if IIS is running"
@@ -168,7 +168,7 @@ Machine 2: **EastDebianVM**
 
 1. Type in the following command to create WestDebianVM
 
-```bash
+```sh
 az vm create \
 --image credativ:Debian:8:latest \
 --size 'Standard_D1' \
@@ -184,7 +184,7 @@ az vm create \
 
 2. Note shh key will be generated (if it doesn't exist) and saved in the `~/.ssh` directory. Type in the following command in the cloud shell to see directory contents of the `~/.ssh` directory.
 
-```bash
+```sh
 ls .ssh
 ```
 
@@ -192,7 +192,7 @@ ls .ssh
 
 1. Type in the following command to create EastAS
 
-```bash
+```sh
 az vm availability-set create --name EastAS --resource-group EastRG
 ```
 
@@ -200,7 +200,7 @@ az vm availability-set create --name EastAS --resource-group EastRG
 
 1. Type in the following command to create EastDebianVM
 
-```bash
+```sh
 az vm create \
 --image credativ:Debian:8:latest \
 --size 'Standard_D1' \
@@ -218,7 +218,7 @@ az vm create \
 
 1. Type in the following command to create random string using Bash for use in assigning unique DNS names.
 
-```bash
+```sh
 myRand=`head /dev/urandom | tr -dc a-z0-9 | head -c 6 ; echo ''`
 echo "the random string append will be:  "$myRand
 ```
@@ -227,7 +227,7 @@ echo "the random string append will be:  "$myRand
 
 1. Type in the following command to assigning unique DNS names to the Linux Debian VMs.
 
-```bash
+```sh
 az network public-ip update --resource-group WestRG --name WestDebianVMPublicIP --dns-name westdebianvm$myRand
 
 az network public-ip update --resource-group EastRG --name EastDebianVMPublicIP --dns-name eastdebianvm$myRand
@@ -239,7 +239,7 @@ az network public-ip update --resource-group EastRG --name EastDebianVMPublicIP 
 
 1. Type in the following command to see the status of the Linux Debian VMs (They Should be running).
 
-```bash
+```sh
 az vm get-instance-view --name WestDebianVM --resource-group WestRG --query instanceView.statuses[1] --output table
 
 az vm get-instance-view --name EastDebianVM --resource-group EastRG --query instanceView.statuses[1] --output table
@@ -251,7 +251,7 @@ az vm get-instance-view --name EastDebianVM --resource-group EastRG --query inst
 
 1. Type in the following command to get Public and Private IP Addresses of the VMs
 
-```bash
+```sh
 az vm list-ip-addresses --resource-group WestRG
 
 az vm list-ip-addresses --resource-group EastRG
@@ -263,7 +263,7 @@ az vm list-ip-addresses --resource-group EastRG
 
 1. Use the WestDebianVM IP address to edit the following command to start the SSH session
 
-```bash
+```sh
 ssh azuser@<PUBLIC IP address of West Debian VM>
 ```
 
@@ -273,7 +273,7 @@ ssh azuser@<PUBLIC IP address of West Debian VM>
 
 1. Use the WestWinVM IP address to edit the following command and type in the cloud shell SSH session to ping the WestWinVM.
 
-```bash
+```sh
 ping <PRIVATE IP address of the Windows server>
 ```
 
@@ -283,7 +283,7 @@ ping <PRIVATE IP address of the Windows server>
 
 > *This should work due to previously configured VNet peering*
 
-```bash
+```sh
 ping <PRIVATE IP address of eastdebianvm>
 ```
 
@@ -297,7 +297,7 @@ ping <PRIVATE IP address of eastdebianvm>
     1. Generate a random string to get a unique DNS name for your Traffic Manager
     1. Create Traffic Manager Profile with a "Performance" routing method
 
-```bash
+```sh
 myRand=`head /dev/urandom | tr -dc a-z0-9 | head -c 6 ; echo ''`
 
 echo "the random string append will be:  "$myRand
@@ -313,7 +313,7 @@ az network traffic-manager profile create \
 
 1. Type in the following command to create a Traffic Manager Endpoint
 
-```bash
+```sh
 az network traffic-manager endpoint create \
   --name westdebianvmendpoint \
   --profile-name debianvmtm \
@@ -339,7 +339,7 @@ The main tasks for this exercise are as follows:
 
 1. Type in the following command to create a resource group for your scale set
 
-```bash
+```sh
 az group create --name EastScaleRG --location eastus
 ```
 
@@ -347,7 +347,7 @@ az group create --name EastScaleRG --location eastus
 
 1. Type in the following command to create scale set
 
-```bash
+```sh
 az vmss create \
   --resource-group EastScaleRG \
   --name EastUbuntuServers \
@@ -368,7 +368,7 @@ View Portal Dashboard and note 2 servers before scale rules
 
 1. Type in the following command to define an auto scale profile
 
-```bash
+```sh
 az monitor autoscale create \
   --resource-group EastScaleRG \
   --resource EastUbuntuServers \
@@ -385,7 +385,7 @@ az monitor autoscale create \
 
 1. Type in the following command to create **autoscale out** rule
 
-```bash
+```sh
 az monitor autoscale rule create \
   --resource-group EastScaleRG \
   --autoscale-name autoscale \
@@ -397,7 +397,7 @@ az monitor autoscale rule create \
 
 1. Type in the following command to create **autoscale in** rule
 
-```bash
+```sh
 az monitor autoscale rule create \
   --resource-group EastScaleRG \
   --autoscale-name autoscale \
@@ -419,7 +419,7 @@ az monitor autoscale rule create \
 1. Type in the following command to list the servers
 1. Repeat the command after 30 seconds until only 1 server instance is listed
 
-```bash
+```sh
 az vmss list-instance-connection-info \
 --resource-group EastScaleRG \
 --name EastUbuntuServers
@@ -430,7 +430,7 @@ az vmss list-instance-connection-info \
 1. Use the portal to get the IP Address of instance 0 of the scale set
 1. Type in the following edited command to connect with SSH
 
-```bash
+```sh
 # example: ssh azuser@13.92.224.66 -p 50000  
 ssh azuser@<instance 0 IP> -p 50000
 ```
@@ -439,7 +439,7 @@ ssh azuser@<instance 0 IP> -p 50000
 
 1. Type in the following command in the SSH session to install Stress application (times out in 240 seconds)
 
-```bash
+```sh
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 240 &
 ```
@@ -448,13 +448,13 @@ sudo stress --cpu 10 --timeout 240 &
 
 1. Type in the following command in SSH to monitor the stress
 
-```bash
+```sh
 top
 ```
 
 **exit and SSH**
 
-```bash
+```sh
 # ctrl-c
 exit
 ```
@@ -463,7 +463,7 @@ exit
 
 1. Type in the following command to Run monitoring on the Autoscale
 
-```bash
+```sh
 watch az vmss list-instances \
   --resource-group EastScaleRG \
   --name EastUbuntuServers \
@@ -476,6 +476,6 @@ watch az vmss list-instances \
 
 **Clean up Scale Set Demo**
 
-```bash
+```sh
 az group delete --name EastScaleRG --yes --no-wait
 ```

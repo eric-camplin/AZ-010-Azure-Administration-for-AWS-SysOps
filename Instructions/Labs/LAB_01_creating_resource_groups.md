@@ -52,7 +52,7 @@ The main tasks for this exercise are as follows:
 
 1. At the **Cloud Shell** command prompt, type in the following command and press **Enter** to list all subscriptions associated with the account used for your portal sign in.
 
-```bash
+```sh
 az account list --output table
 ```
 
@@ -60,7 +60,7 @@ az account list --output table
 1. Reset default subscription if the default is not set for your desired subscription
 1. At the **Cloud Shell** command prompt, type in the following command with **your desired subscriptionID** and press **Enter** to set the default subscription.
 
-```bash
+```sh
 # replace --subcription value with your subscription ID or subscription name
 az account set --subscription [1111a1a1-22bb-3c33-d44d-e5e555ee5eee]
 az account list --output table
@@ -72,13 +72,13 @@ az account list --output table
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the WestRG resource group in the westus region.
 
-```bash
+```sh
 az group create --location westus --name WestRG --output table
 ```
 
 2. At the **Cloud Shell** command prompt, type in the following command to list available resource groups in the westus region.
 
-```bash
+```sh
 az group list --output table
 ```
 
@@ -88,13 +88,13 @@ az group list --output table
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the EastRG resource group in the eastus region.
 
-```bash
+```sh
 az group create --location eastus --name EastRG --output table
 ```
 
 2. At the **Cloud Shell** command prompt, type in the following command to list available resource groups in the eastus region.
 
-```bash
+```sh
 az group list --output table
 ```
 

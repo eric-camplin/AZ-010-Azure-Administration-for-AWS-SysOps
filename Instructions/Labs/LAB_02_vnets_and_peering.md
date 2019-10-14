@@ -44,7 +44,7 @@ The main tasks for this exercise are as follows:
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the WestVNet virtual network with WestSubNet1 subnet.
 
-```bash
+```sh
 az network vnet create \
   --resource-group WestRG \
   --name WestVNet \
@@ -55,13 +55,13 @@ az network vnet create \
 
 2. Verify West Network and Subnet was created.
 
-```bash
+```sh
 az network vnet list --output table
 ```
 
 3. Verify West Network and Subnet were created.
 
-```bash
+```sh
 az network vnet subnet list --resource-group WestRG --vnet-name WestVNet --output table
 ```
 
@@ -69,7 +69,7 @@ az network vnet subnet list --resource-group WestRG --vnet-name WestVNet --outpu
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the EastVNet virtual network with EastSubNet1 subnet.
 
-```bash
+```sh
 az network vnet create \
   --resource-group EastRG \
   --name EastVNet \
@@ -81,7 +81,7 @@ az network vnet create \
 2. You can add additional SubNets to an existing VNet.
 3. At the **Cloud Shell** command prompt, type in the following command to create the EastVNet EastSubNet2 subnet.
 
-```bash
+```sh
 az network vnet subnet create \
   --resource-group EastRG \
   --vnet-name EastVNet \
@@ -91,13 +91,13 @@ az network vnet subnet create \
 
 4. Verify the East NetWork (EastVNet) was created
 
-```bash
+```sh
 az network vnet list --output table
 ```
 
 5. Verify East Network Subnets were created
 
-```bash
+```sh
 az network vnet subnet list --resource-group EastRG --vnet-name EastVNet --output table
 ```
 
@@ -106,7 +106,7 @@ az network vnet subnet list --resource-group EastRG --vnet-name EastVNet --outpu
 1. Create Peering between West and East VNets using `remote-vnet-id` CLI command
 1. At the **Cloud Shell** command prompt, type in the following command to Capture the EastVNet ID in a variable.
 
-```bash
+```sh
 EastVNetId=$(az network vnet show \
   --resource-group EastRG \
   --name EastVNet \
@@ -117,7 +117,7 @@ EastVNetId=$(az network vnet show \
 
 3. Type in the following command to peer WestVNet to EastVNet
 
-```bash
+```sh
 az network vnet peering create \
   --name WesttoEastPeering \
   --resource-group WestRG \
@@ -130,7 +130,7 @@ az network vnet peering create \
 
 4. Type in the following command to Verify State of peering
 
-```bash
+```sh
 az network vnet peering list \
   --resource-group WestRG \
   --vnet-name WestVNet \
@@ -141,7 +141,7 @@ az network vnet peering list \
 
 1. Capture the WestVNet ID in a variable
 
-```bash
+```sh
 WestVNetId=$(az network vnet show \
   --resource-group WestRG \
   --name WestVNet \
@@ -152,7 +152,7 @@ echo "WestVNetId = " $WestVNetId
 
 2. Type in the following command to peer EastVNet to WestVNet
 
-```bash
+```sh
 az network vnet peering create \
   --name EasttoWestPeering \
   --resource-group EastRG \
@@ -163,7 +163,7 @@ az network vnet peering create \
 
 3. Type in the following command to Verify State of peering
 
-```bash
+```sh
 az network vnet peering list \
   --resource-group EastRG \
   --vnet-name EastVNet \
