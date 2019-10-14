@@ -25,17 +25,17 @@
 subscriptionID=[**subscription ID to use for labs**]
 
 # ----Main Scripts----
-echo ----Setting default subscription----
+# ----Setting default subscription----
 az account set --subscription $subscriptionID
 echo "Note the Default Subscription"
 az account list --output table
 
-echo ----Creating WestRG----
+# ----Creating WestRG----
 az group create --location westus --name WestRG --output table
 
-echo ----Creating EastRG----
+# ----Creating EastRG----
 az group create --location eastus --name EastRG --output table
 
-echo ----Listing resource groups----
+# ----Listing resource groups----
 az group list -o table
 ```
