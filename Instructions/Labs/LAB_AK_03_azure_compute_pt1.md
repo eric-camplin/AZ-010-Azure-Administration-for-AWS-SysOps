@@ -37,13 +37,13 @@ availabilitySet='WestAS'
 
 # ----Main Scripts----
 
-echo "----Create availability set----"
+# ----Create availability set----
 az vm availability-set create \
   --name $availabilitySet \
   --resource-group $resourceGroupName \
   --location $location
 
-echo "----Create WestWinVM VM----"
+# ----Create WestWinVM VM----
 az vm create --name $vmName --resource-group $resourceGroupName \
   --image win2016datacenter \
   --admin-username $adminUserName \
@@ -52,17 +52,17 @@ az vm create --name $vmName --resource-group $resourceGroupName \
   --size $vmSize \
   --availability-set $availabilitySet
 
-echo "----open ports----"
+# ----open ports----
 az vm open-port -g WestRG -n $vmName --port 80 --priority 1500
 az vm open-port -g WestRG -n $vmName --port 3389 --priority 2000
 
-echo "----Allow ICMPv4-In (Bash CLI running PowerShell)----"
+# ----Allow ICMPv4-In (Bash CLI running PowerShell)----
 az vm extension set --publisher Microsoft.Compute \
 --version 1.8 --name CustomScriptExtension \
 --vm-name $vmName --resource-group $resourceGroupName \
 --settings '{"commandToExecute":"powershell.exe New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}'
 
-echo "----Install IIS (Bash CLI running PowerShell)----"
+# ----Install IIS (Bash CLI running PowerShell)----
 az vm extension set --publisher Microsoft.Compute \
 --version 1.8 \
 --name CustomScriptExtension \
@@ -70,15 +70,15 @@ az vm extension set --publisher Microsoft.Compute \
 --resource-group $resourceGroupName \
 --settings '{"commandToExecute":"powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools"}'
 
-echo "----Check the IIS Server is running on VM public IP address----"
+# ----Check the IIS Server is running on VM public IP address----
 az vm show -d -g $resourceGroupName -n $vmName --query publicIps -o tsv
 
 # ***************************************************
 echo "Paste above IP address in browser to see if IIS is running"
 # ***************************************************
 
-echo "----Create Debian virtual machines configured with DNS----"
-echo "----Create WestDebianVM----"
+# ----Create Debian virtual machines configured with DNS----
+# ----Create WestDebianVM----
 az vm create \
 --image credativ:Debian:8:latest \
 --admin-username azuser \
@@ -91,10 +91,10 @@ az vm create \
 --name WestDebianVM \
 --generate-ssh-keys
 
-echo "----Create EastAS Availability Set----"
+# ----Create EastAS Availability Set----
 az vm availability-set create --name EastAS --resource-group EastRG
 
-echo "----Create EastDebianVM----"
+# ----Create EastDebianVM----
 az vm create \
 --image credativ:Debian:8:latest \
 --admin-username azuser \
@@ -107,24 +107,24 @@ az vm create \
 --name EastDebianVM \
 --generate-ssh-keys
 
-echo "----Configure DNS of Debian Machines----"
+# ----Configure DNS of Debian Machines----
 myRand=`head /dev/urandom | tr -dc a-z0-9 | head -c 6 ; echo ''`
 echo "the random string append will be:  "$myRand
 
-echo "----Configure DNS----"
+# ----Configure DNS----
 az network public-ip update --resource-group WestRG --name WestDebianVMPublicIP --dns-name westdebianvm$myRand
 
 az network public-ip update --resource-group EastRG --name EastDebianVMPublicIP --dns-name eastdebianvm$myRand
 
-echo "----Ensure both Debian VMs are running----"
+# ----Ensure both Debian VMs are running----
 az vm get-instance-view --name WestDebianVM --resource-group WestRG --query instanceView.statuses[1] --output table
 
 az vm get-instance-view --name EastDebianVM --resource-group EastRG --query instanceView.statuses[1] --output table
 
-echo "----Connect to WestDebianVM with SSH and ping test WestWinVM----"
-echo "----Connect to the Debian virtual machine in WestRG----"
+# ----Connect to WestDebianVM with SSH and ping test WestWinVM----
+# ----Connect to the Debian virtual machine in WestRG----
 
-echo "----get Public and Private IP Addresses of the VMs----"
+# ----get Public and Private IP Addresses of the VMs----
 WestDebianIP=$(az vm list-ip-addresses -n WestDebianVM --query "[*].virtualMachine.network.publicIpAddresses[0].ipAddress" -o tsv)
 
 EastDebianIP=$(az vm list-ip-addresses -n EastDebianVM --query "[*].virtualMachine.network.publicIpAddresses[0].ipAddress" -o tsv)
@@ -149,4 +149,4 @@ echo "WestWinVM IP: " $WestWinIP
 
 **Complete Ex. 1 Task4: SSH and Pings**
 
-* Continue Lab03 Answer Key solution Part 2 with LAB_AK_03_azure_compute_pt2.md
+**Continue Lab03 Answer Key solution Part 2 with LAB_AK_03_azure_compute_pt2.md**
