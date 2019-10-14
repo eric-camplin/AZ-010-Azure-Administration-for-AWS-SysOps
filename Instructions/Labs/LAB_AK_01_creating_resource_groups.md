@@ -27,7 +27,7 @@ subscriptionID=[**subscription ID to use for labs**]
 # ----Main Scripts----
 # ----Setting default subscription----
 az account set --subscription $subscriptionID
-echo "Note the Default Subscription"
+# ---Note the Default Subscription---
 az account list --output table
 
 # ----Creating WestRG----

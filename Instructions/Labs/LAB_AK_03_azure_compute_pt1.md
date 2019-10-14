@@ -73,9 +73,9 @@ az vm extension set --publisher Microsoft.Compute \
 # ----Check the IIS Server is running on VM public IP address----
 az vm show -d -g $resourceGroupName -n $vmName --query publicIps -o tsv
 
-# ***************************************************
-echo "Paste above IP address in browser to see if IIS is running"
-# ***************************************************
+# ***********************************************************
+# Paste above IP address in browser to see if IIS is running
+# ***********************************************************
 
 # ----Create Debian virtual machines configured with DNS----
 # ----Create WestDebianVM----

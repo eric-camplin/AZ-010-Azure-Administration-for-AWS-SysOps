@@ -141,7 +141,7 @@ az vm extension set --publisher Microsoft.Compute \
 ```sh
 az vm show -d -g $resourceGroupName -n $vmName --query publicIps -o tsv
 
-echo "Paste above IP address in browser to see if IIS is running"
+# ----Paste above IP address in browser to see if IIS is running----
 ```
 
 2. Paste the resulting IP address into a web browser to verify IIS default page is present.
