@@ -17,40 +17,13 @@
 # ---------------
 # DEPENDENCIES:
 #   LAB1-solution in place (WestRG & EastRG created)
-#   LAB2-solution in place (VNets, SubNets & Peering created)
-#   LAB3 pt1 solution in Place (Create VMs)
 # ---------------
 # WARNING: Several Steps take more than 1 minute
 # Be patient and consult instructor if errors are encountered
 
 # ----------START----------
 
-# ----EDIT THESE VALUES to be Unique Before Running----
-# shoulld be same as in LAB3 Pt1
-adminUserName='azuser'
-adminPassword='UniqueP@$$w0rd-Here'
-
 # ----Main Scripts----
-# ----Exercise 1
-# ----Task 5: Create Traffic Manager profile
-
-# ----Create Traffic Manager Profile and Endpoints----
-myRand=`head /dev/urandom | tr -dc a-z0-9 | head -c 6 ; echo ''`
-echo "the random string append will be:  "$myRand
-
-az network traffic-manager profile create \
-  --name debianvmtm \
-  --resource-group WestRG \
-  --routing-method Performance \
-  --unique-dns-name sysops010$myRand
-
-# ----Create Traffic Manager Endpoints----
-az network traffic-manager endpoint create \
-  --name westdebianvmendpoint \
-  --profile-name debianvmtm \
-  --resource-group WestRG \
-  --type azureEndpoints \
-  --endpoint-status enabled
 
 # ----Exercise 2: Create and Test an Ubuntu Scale Set----
 # ----Create Ubuntu Scale Set----
@@ -116,5 +89,5 @@ az vmss list-instance-connection-info \
 >
 > * install/run stress
 > * view scaling
-> * Clean up scale set
+> * clean up scale set
 >

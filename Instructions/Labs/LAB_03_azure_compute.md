@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Azure VM, Traffic Manager and Scale Set'
+    title: 'Azure VM and Scale Set'
     module: 'Module 3: Azure Compute'
 ---
     
@@ -10,7 +10,7 @@ lab:
 
 ## Scenario
 
-In this lab you will use CLI commands in the Cloud Shell with the Bash interface to administer Azure Windows and Debian VMs within an Availability Set and Configure Traffic Manager. Also, the Lab will create an Ubuntu Scale Set with an optional test to demonstrate scaling in and scaling out.
+In this lab you will use CLI commands in the Cloud Shell with the Bash interface to administer Azure Windows and Debian VMs within an Availability Set. Also, the Lab will create an Ubuntu Scale Set with an optional test to demonstrate scaling in and scaling out.
 
 ## Objectives
 
@@ -18,12 +18,11 @@ After you complete this lab, you will be able to use the Azure CLI to:
 
 * Create a Scale Set
 * Create and configure Windows and Linux VMs
-* Configure Traffic Manager with your VMs
 * Configure an Ubuntu Scale Set
 
 ## Lab Setup
 
-* **Estimated time**: 70 Minutes
+* **Estimated time**: 60 Minutes
 
 ## Instructions
 
@@ -35,14 +34,13 @@ After you complete this lab, you will be able to use the Azure CLI to:
     1. Module 1: Azure Administration - **Lab: Creating Resource Groups**. EastRG and WestRG resource groups configured.
     1. Module 2: Azure Networking - **Lab: Virtual Networks and Peering**. VNets with SubNets and peering configured.
 
-### Exercise 1: Create VMs configured with traffic manager within availability sets
+### Exercise 1: Create VMs configured within availability sets
 
 The main tasks for this exercise are as follows:
 
 1. Create an availability set
 1. Create a Windows virtual machine
 1. Create Linux Debian virtual machines
-1. Apply Traffic Manager to VMs
 
 #### Task 1: Create Windows virtual machine
 
@@ -289,42 +287,6 @@ ping <PRIVATE IP address of eastdebianvm>
 
 > **Note**: type `exit` to exit SSH
 
-#### Task 5: Create Traffic Manager profile
-
-**Create Traffic Manager Profile and Endpoints**
-
-1. Type in the following command to:
-    1. Generate a random string to get a unique DNS name for your Traffic Manager
-    1. Create Traffic Manager Profile with a "Performance" routing method
-
-```sh
-myRand=`head /dev/urandom | tr -dc a-z0-9 | head -c 6 ; echo ''`
-
-echo "the random string append will be:  "$myRand
-
-az network traffic-manager profile create \
-  --name debianvmtm \
-  --resource-group WestRG \
-  --routing-method Performance \
-  --unique-dns-name sysops010$myRand # unique name required
-```
-
-**Create Traffic Manager Endpoints**
-
-1. Type in the following command to create a Traffic Manager Endpoint
-
-```sh
-az network traffic-manager endpoint create \
-  --name westdebianvmendpoint \
-  --profile-name debianvmtm \
-  --resource-group WestRG \
-  --type azureEndpoints \
-  --endpoint-status enabled \
-  #--target-resource-id <target_resource_id such as webApp> \
-```
-
-2. View the Traffic Manager Configuration in the Portal.
-
 ### Exercise 2: Create and Test an Ubuntu Scale Set
 
 The main tasks for this exercise are as follows:
@@ -413,11 +375,11 @@ az monitor autoscale rule create \
 
 **list the servers running in the scale set**
 
-* In the first minute, the script should list 2 server instances (0 & 1)
-* Sometime after a minute only 1 server instance (0) should be listed
+* In the first minute, the script should list 2 server instances (e.g. 0 & 1)
+* Sometime after a minute only 1 server instance (e.g. 0) should be listed
 
 1. Type in the following command to list the servers
-1. Repeat the command after 30 seconds until only 1 server instance is listed
+1. **Repeat** the command after 30 seconds until only 1 server instance is listed
 
 ```sh
 az vmss list-instance-connection-info \
