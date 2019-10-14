@@ -1,10 +1,10 @@
 ---
 lab:
     title: 'Creating Resource Groups'
-    module: 'Module 1: Azure Administration'
+    module: 'Module 1: Azure Storage'
 ---
 
-# Lab 01: Creating Resource Groups
+# Lab 01: PLACEHOLDER TEXT BELOW HERE
 
 An Azure Cloud Shell CLI Introduction
 
