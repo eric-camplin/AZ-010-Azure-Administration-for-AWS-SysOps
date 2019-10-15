@@ -178,7 +178,7 @@ ls
 
 **upload-batch**
 
-1. Create aan `upload` directory
+1. Create an `upload` directory
 
 ```sh
 # Create files in uploadfiles directory
