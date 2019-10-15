@@ -12,7 +12,7 @@ An Azure Cloud Shell CLI Introduction
 
 ## Scenario
 
-This lab introduces setting up the subscription you will use for the course in the Azure Portal and introduces the the Azure Cloud Shell using Azure CLI commands.  The course instructor will provide any the steps needed to configure the Azure subscription based on the particular course environment. You will run the courses first CLI commands in the Azure Cloud Shell by configuring two Resource Groups.
+This lab introduces setting up the subscription you will use for the course in the Azure Portal and introduces the Azure Cloud Shell using Azure CLI commands.  The course instructor will provide any the steps needed to configure the Azure subscription based on the particular course environment. You will run the courses first CLI commands in the Azure Cloud Shell by configuring two Resource Groups.
 
 ## Objectives
 
