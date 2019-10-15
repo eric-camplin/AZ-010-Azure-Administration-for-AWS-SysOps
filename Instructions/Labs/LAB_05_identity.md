@@ -1,25 +1,26 @@
 ---
 lab:
-    title: 'Creating Resource Groups'
+    title: 'Creating USers and Groups, Policy and Monitoring'
     module: 'Module 5: Azure Identity'
 ---
 
-# Lab 01: PLACEHOLDER TEXT BELOW HERE
+# Lab 01: Azure Identity
 
-An Azure Cloud Shell CLI Introduction
+Create users and groups, policy and monitoring
 
 ## Student lab manual
 
 ## Scenario
 
-This lab introduces setting up the subscription you will use for the course in the Azure Portal and introduces the the Azure Cloud Shell using Azure CLI commands.  The course instructor will provide any the steps needed to configure the Azure subscription based on the particular course environment. You will run the courses first CLI commands in the Azure Cloud Shell by configuring two Resource Groups.
+In this lab you will use CLI commands in the Cloud Shell with the Bash interface to administer Azure Identity.  You will work with Azure Role-based Access Control, Azure Policy, and review monitoring using Query Explorer.
 
 ## Objectives
 
 After you complete this lab, you will be able to:
 
-* Set up a subscription using the Azure Portal (Course Instructor provides steps as needed)
-* Create Resource Groups using the Azure CLI commands
+* Create and configure users and groups
+* Create a policy restricting software installs
+* Review monitoring logs and alerts in the Azure Portal using Query Explorer
 
 ## Lab Setup
 
@@ -37,10 +38,9 @@ After you complete this lab, you will be able to:
 
 The main tasks for this exercise are as follows:
 
-1. Launch the Azure Cloud Shell
-1. Set the default subscription that will be used for the labs
-1. Create WestRG resource group using CLI commands
-1. Create EastRG resource group using CLI commands
+1. Add users and groups
+1. Create a policy restricting software installs
+1. Review monitoring logs and alerts
 
 #### Task 1: Open the Cloud Shell
 
