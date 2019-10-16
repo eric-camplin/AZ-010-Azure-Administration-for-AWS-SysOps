@@ -6,6 +6,7 @@
 1. Location section titled `# ----EDIT THESE VALUES Before Running----`
 1. Edit the values so they represent your environment and save the file locally
 1. Log into the azure portal, open bash Cloud Shell
+1. Check your dependencies are in place (See comments top of script)
 1. Copy the CLI scripts from you local file and paste script into the Bash Cloud Shell
 1. Some tasks can take more than 1 minute, wait for script to complete and review output
 1. See instructor if errors occur
