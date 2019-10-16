@@ -271,7 +271,7 @@ az storage blob url -c $container_name -n helloAdmin -o tsv
 
 1. When done reviewing clean up the Blob container
 
-```bash
+```sh
 az storage container delete -n $container_name
 ```
 

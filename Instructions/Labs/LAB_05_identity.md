@@ -24,7 +24,7 @@ After you complete this lab, you will be able to:
 
 ## Lab Setup
 
-* **Estimated time**: 30 Minutes
+* **Estimated time**: 40 Minutes
 
 ## Instructions
 
@@ -42,62 +42,107 @@ The main tasks for this exercise are as follows:
 1. Create a policy restricting software installs
 1. Review monitoring logs and alerts
 
-#### Task 1: Open the Cloud Shell
+#### Task 1: Task 1: Add users and groups
 
-**Set subscription in the Azure Cloud Shell**
+### Add User
 
-1. At the top of the portal, click the **Cloud Shell** icon to open the Cloud Shell pane.
+#### Create a variable for user domain
 
-1. At the Cloud Shell interface, select **Bash**.
-
-1. At the **Cloud Shell** command prompt, type in the following command and press **Enter** to list all subscriptions associated with the account used for your portal sign in.
-
-```bash
-az account list --output table
+```sh
+my_domain=ecamplinhotmail.onmicrosoft.com
+# user@hotmail.com =>  userhotmail.onmicrosoft.com
+# my_domain=<email+service>.onmicrosoft.com
 ```
 
-1. Review the list of subscriptions and if any is labeled as "default `true`"
-1. Reset default subscription if the default is not set for your desired subscription
-1. At the **Cloud Shell** command prompt, type in the following command with **your desired subscriptionID** and press **Enter** to set the default subscription.
+#### Create a user account
 
-```bash
-# replace --subcription value with your subscription ID or subscription name
-az account set --subscription [1111a1a1-22bb-3c33-d44d-e5e555ee5eee]
-az account list --output table
+```sh
+my_user_account=AZ010@$my_domain
+
+# Create your unique strong password
+az ad user create \
+    --display-name AZ010Tester \
+    --password sTR0ngP@ssWorD543%* \
+    --user-principal-name $my_user_account
 ```
 
-4. Review the list of subscriptions and to ensure the proper subscription is labeled as "default `true`"
+### Manage users and groups
 
-#### Task 2: Create WestRG Resource Group with CLI
+#### List AD users
 
-1. At the **Cloud Shell** command prompt, type in the following command to create the WestRG resource group in the westus region.
-
-```bash
-az group create --location westus --name WestRG --output table
+```sh
+az ad user list --output json | jq '.[] | {"userPrincipalName":.userPrincipalName, "objectId":.objectId}'
 ```
 
-2. At the **Cloud Shell** command prompt, type in the following command to list available resource groups in the westus region.
+#### List All role assignments
 
-```bash
-az group list --output table
+```sh
+az role assignment list --all -o table
 ```
 
-3. Verify the newly created WestRG is listed
+#### List the role assignments for resource group
 
-#### Task 3: Create EastRG Resource Group with CLI
-
-1. At the **Cloud Shell** command prompt, type in the following command to create the EastRG resource group in the eastus region.
-
-```bash
-az group create --location eastus --name EastRG --output table
+```sh
+az role assignment list --resource-group WestRG --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-2. At the **Cloud Shell** command prompt, type in the following command to list available resource groups in the eastus region.
+#### Add a role to a user
 
-```bash
-az group list --output table
+```sh
+az role assignment create --role "Owner" --assignee $my_user_account --resource-group WestRG
+
+#az role assignment create --role "Owner" --assignee <assignee object id> --resource-group <resource_group>
 ```
 
-3. Verify the newly created EastRG is listed
+#### Repeat listing role assignments for resource group
 
-> **Result**: In this lab you have configured your default Azure subscription and created two resource groups that we will be used further in the labs that follow.
+```sh
+az role assignment list --resource-group WestRG --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+#### List the role assignments for resource group
+
+```sh
+az role assignment list --assignee $my_user_account -g WestRG #--output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+```
+
+## Task 2 – Create a policy restricting software installs
+
+### Deploy Policy
+
+> *Review rules.json and parameters.json used below script on [Github](https://github.com/Azure/azure-policy/tree/master/samples/built-in-policy/require-sqlserver-version12)*
+
+```sh
+az policy definition create --name 'require-sqlserver-version12' \
+    --display-name 'Require SQL Server version 12.0' \
+    --description 'This policy ensures all SQL servers use version 12.0.' \
+    --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/require-sqlserver-version12/azurepolicy.rules.json' \
+    --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/built-in-policy/require-sqlserver-version12/azurepolicy.parameters.json' \
+    --mode All
+
+# scope at subscription level
+az policy assignment create --name SQL12AZ010 \
+    --display-name 'Require SQL Server version 12.0 - subscription scope' \
+    --scope '/subscriptions/546bf0c4-dead-4700-9ea0-a8fd36bdbc5e' \
+    --policy 'require-sqlserver-version12'
+```
+
+### Check for Compliance
+
+1. Return to the Azure Policy service page.
+2. Select Compliance. And set Compliance State filter to “All compliance states”
+3. Review the status of your policy and your definition.
+
+## Task 3 – Review monitoring logs and alerts
+
+### Access the demonstration environment
+
+[Log Analytics Querying Demonstration](https://portal.loganalytics.io/demo)
+
+### Use the Query Explorer
+
+1. Select Query Explorer (top right).
+2. Expand Favorites and then select All Syslog records with errors.
+3. Notice the query is added to the editing pane. Notice the structure of the query.
+4. Run the query. Explore the records returned.
+5. As you have time experiment with other Favorites and also Saved Queries.
