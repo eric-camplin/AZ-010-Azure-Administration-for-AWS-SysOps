@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Creating USers and Groups, Policy and Monitoring'
+    title: 'Creating Users and Groups, Policy and Monitoring'
     module: 'Module 5: Azure Identity'
 ---
 
@@ -24,7 +24,7 @@ After you complete this lab, you will be able to:
 
 ## Lab Setup
 
-* **Estimated time**: 20 Minutes
+* **Estimated time**: 30 Minutes
 
 ## Instructions
 
