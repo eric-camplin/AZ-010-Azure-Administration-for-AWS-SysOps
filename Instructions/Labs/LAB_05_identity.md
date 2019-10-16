@@ -1,6 +1,6 @@
 ---
 lab:
-    title: 'Creating Users, Groups and Policy, and Monitoring logs and alerts'
+    title: 'Creating Users, Groups and Policy. Monitoring logs and alerts.'
     module: 'Module 5: Azure Identity'
 ---
 
@@ -50,7 +50,7 @@ The main tasks for this exercise are as follows:
 
 > With email address of eric@contoso.com the command would be `my_domain=ericcontoso.com.onmicrosoft.com`.
 >
-> > *consult instructor if needed.*
+> * *consult instructor if needed.*
 
 2. Edit variable for user domain.
 
