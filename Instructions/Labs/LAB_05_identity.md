@@ -173,7 +173,7 @@ az policy assignment show --name require-sqlserver-version12
 
 1. Monitoring logs and alerts
 
-### Task 1 – Review monitoring logs and alerts
+### Exercise 2 - Task 1 – Review monitoring logs and alerts
 
 **Access the demonstration environment**
 
