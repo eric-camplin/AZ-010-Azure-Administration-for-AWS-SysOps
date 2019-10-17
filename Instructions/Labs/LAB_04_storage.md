@@ -39,7 +39,7 @@ After you complete this lab, you will be able to use the Azure CLI to create and
     1. Module 2: Azure Networking - **Lab: Virtual Networks and Peering**. VNets with SubNets and peering configured.
     1. Module 3: Azure compute - **Lab: Azure VM**. EastDebianVM created.
 
-### Exercise 1: Blobs, Secure Access Storage, Service Endpoint and File Storage
+## Exercise 1: Blobs, Secure Access Storage, Service Endpoint and File Storage
 
 The main tasks for this exercise are as follows:
 
@@ -48,7 +48,7 @@ The main tasks for this exercise are as follows:
 1. Configure a SubNet Service Endpoint
 1. Create and Configure File Storage
 
-#### Task 1: Create a Storage Account with Blob Storage
+### Task 1: Create a Storage Account with Blob Storage
 
 **Create storage account variables**
 
@@ -275,7 +275,7 @@ az storage blob url -c $container_name -n helloAdmin -o tsv
 az storage container delete -n $container_name
 ```
 
-#### Task 2: Secure access to storage
+### Task 2: Secure access to storage
 
 **Create a private blob container in the west storage account**
 
@@ -365,7 +365,7 @@ echo $private_URI
 
 5. Test the URI link generated in the previous step to ensure it worked
 
-#### Task 3: Create a subnet service endpoint
+### Task 3: Create a subnet service endpoint
 
 **Display the status of the default rule for the storage account**
 
@@ -450,7 +450,7 @@ echo $private_URI
 az storage account delete -n $my_storage_account -g my_resource_group
 ```
 
-#### Task 4 – Create file storage
+### Task 4 – Create file storage
 
 **Create a eastus storage account using Azure CLI**
 

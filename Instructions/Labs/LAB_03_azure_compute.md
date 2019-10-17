@@ -34,7 +34,7 @@ After you complete this lab, you will be able to use the Azure CLI to:
     1. Module 1: Azure Administration - **Lab: Creating Resource Groups**. EastRG and WestRG resource groups configured.
     1. Module 2: Azure Networking - **Lab: Virtual Networks and Peering**. VNets with SubNets and peering configured.
 
-### Exercise 1: Create VMs configured within availability sets
+## Exercise 1: Create VMs configured within availability sets
 
 The main tasks for this exercise are as follows:
 
@@ -42,7 +42,7 @@ The main tasks for this exercise are as follows:
 1. Create a Windows virtual machine
 1. Create Linux Debian virtual machines
 
-#### Task 1: Create Windows virtual machine
+### Task 1: Create Windows virtual machine
 
 * Create an availability set
 * Create Windows Server 2016 DataCenter VM
@@ -104,7 +104,7 @@ az vm open-port -g WestRG -n $vmName --port 3389 --priority 2000
 2. Note the Resources, including the WestWinVM
 3. Launch Azure Advisor and note the recommendations
 
-#### Task 2: Configure WestWinVM as a Web Server and allow Ping
+### Task 2: Configure WestWinVM as a Web Server and allow Ping
 
 **Allow ICMPv4-In (Bash CLI running PowerShell)**
 
@@ -144,7 +144,7 @@ az vm show -d -g $resourceGroupName -n $vmName --query publicIps -o tsv
 
 2. Paste the resulting IP address into a web browser to verify IIS default page is present.
 
-#### Task 3: Create Debian virtual machines configured with DNS
+### Task 3: Create Debian virtual machines configured with DNS
 
 Create two Debian virtual servers in Cloud Shell and connect to servers with SSH
 
@@ -243,7 +243,7 @@ az vm get-instance-view --name WestDebianVM --resource-group WestRG --query inst
 az vm get-instance-view --name EastDebianVM --resource-group EastRG --query instanceView.statuses[1] --output table
 ```
 
-#### Task 4: Connect to WestDebianVM with SSH and ping test WestWinVM
+### Task 4: Connect to WestDebianVM with SSH and ping test WestWinVM
 
 **Connect to the Debian virtual machine in the West resource group**
 
@@ -287,7 +287,7 @@ ping <PRIVATE IP address of eastdebianvm>
 
 > **Note**: type `exit` to exit SSH
 
-### Exercise 2: Create and Test an Ubuntu Scale Set
+## Exercise 2: Create and Test an Ubuntu Scale Set
 
 The main tasks for this exercise are as follows:
 
@@ -295,7 +295,7 @@ The main tasks for this exercise are as follows:
 1. Create autoscale out and autoscale in rules
 1. Test Ubuntu Scale Set (optional)
 
-#### Task 1: Create Ubuntu Scale Set
+### Task 1: Create Ubuntu Scale Set
 
 **Create a scale set resource group**
 
@@ -369,7 +369,7 @@ az monitor autoscale rule create \
 
 > *Note: "scale in" can occur in as little as 2 minutes so result below is expected to differ over the first few minutes*
 
-#### Task 2: Test Ubuntu Scale Set (optional task)
+### Task 2: Test Ubuntu Scale Set (optional task)
 
 > This Task will generate CPU load on a sever as a test to demonstrate the scale set behavior.
 

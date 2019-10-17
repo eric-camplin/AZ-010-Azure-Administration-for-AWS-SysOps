@@ -35,14 +35,14 @@ After you complete this lab, you will be able to:
 1. Configuring the Azure account you will use for this course.
 2. **Module 1: Azure Administration, Lab: Creating Resource Groups** WestRG resource group configured.
 
-### Exercise 1: Create users, groups, and policy
+## Exercise 1: Create users, groups, and policy
 
 The main tasks for this exercise are as follows:
 
 1. Add users and groups.
 1. Create a policy restricting software installs.
 
-#### Task 1: Task 1: Add users and groups
+### Task 1: Task 1: Add users and groups
 
 **Add User**
 
@@ -169,11 +169,11 @@ az policy assignment show --name require-sqlserver-version12
 2. Select Compliance. And set Compliance State filter to “All compliance states”
 3. Review the status of your policy and your definition.
 
-### Exercise 2: Monitoring logs and alerts with Query Explorer
+## Exercise 2: Monitoring logs and alerts with Query Explorer
 
 1. Monitoring logs and alerts
 
-#### Task 1 – Review monitoring logs and alerts
+### Task 1 – Review monitoring logs and alerts
 
 **Access the demonstration environment**
 

@@ -31,7 +31,7 @@ After you complete this lab, you will be able to use the Azure CLI to:
 
 1. EastRG and WestRG resource groups configured from **Module 1: Azure Administration, Lab: Creating Resource Groups**.
 
-### Exercise 1: Create Virtual Networks with SubNets
+## Exercise 1: Create Virtual Networks with SubNets
 
 The main tasks for this exercise are as follows:
 
@@ -40,7 +40,7 @@ The main tasks for this exercise are as follows:
 1. Create East VNet with SubNets.
 1. Verify East NetWork and Subnets were created.
 
-#### Task 1 Create West VNet with SubNet
+### Task 1 Create West VNet with SubNet
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the WestVNet virtual network with WestSubNet1 subnet.
 
@@ -65,7 +65,7 @@ az network vnet list --output table
 az network vnet subnet list --resource-group WestRG --vnet-name WestVNet --output table
 ```
 
-#### Task 2 Create East VNet with SubNets
+### Task 2 Create East VNet with SubNets
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the EastVNet virtual network with EastSubNet1 subnet.
 
@@ -101,7 +101,7 @@ az network vnet list --output table
 az network vnet subnet list --resource-group EastRG --vnet-name EastVNet --output table
 ```
 
-#### Task 3: Create Peering Network West to East
+### Task 3: Create Peering Network West to East
 
 1. Create Peering between West and East VNets using `remote-vnet-id` CLI command
 1. At the **Cloud Shell** command prompt, type in the following command to Capture the EastVNet ID in a variable.
@@ -137,7 +137,7 @@ az network vnet peering list \
   --output table
   ```
 
-#### Task 4: Create Peering Network East to West
+### Task 4: Create Peering Network East to West
 
 1. Capture the WestVNet ID in a variable
 

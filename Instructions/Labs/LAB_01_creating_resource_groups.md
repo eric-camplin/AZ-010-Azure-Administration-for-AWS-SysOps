@@ -33,7 +33,7 @@ After you complete this lab, you will be able to:
 
 1. Follow the course instructor provided steps in configuring the Azure account you will use for this course using the Azure portal.
 
-### Exercise 1: Get started in the Azure CLI using Cloud Shell and create 2 Resource Groups
+## Exercise 1: Get started in the Azure CLI using Cloud Shell and create 2 Resource Groups
 
 The main tasks for this exercise are as follows:
 
@@ -42,7 +42,7 @@ The main tasks for this exercise are as follows:
 1. Create WestRG resource group using CLI commands
 1. Create EastRG resource group using CLI commands
 
-#### Task 1: Open the Cloud Shell
+### Task 1: Open the Cloud Shell
 
 **Set subscription in the Azure Cloud Shell**
 
@@ -68,7 +68,7 @@ az account list --output table
 
 4. Review the list of subscriptions and to ensure the proper subscription is labeled as "default `true`"
 
-#### Task 2: Create WestRG Resource Group with CLI
+### Task 2: Create WestRG Resource Group with CLI
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the WestRG resource group in the westus region.
 
@@ -84,7 +84,7 @@ az group list --output table
 
 3. Verify the newly created WestRG is listed
 
-#### Task 3: Create EastRG Resource Group with CLI
+### Task 3: Create EastRG Resource Group with CLI
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the EastRG resource group in the eastus region.
 
