@@ -40,7 +40,7 @@ The main tasks for this exercise are as follows:
 1. Create East VNet with SubNets.
 1. Verify East NetWork and Subnets were created.
 
-### Task 1 Create West VNet with SubNet
+### Exercise 1 - Task 1 Create West VNet with SubNet
 
 1. At the **Cloud Shell** command prompt, type in the following command to create the WestVNet virtual network with WestSubNet1 subnet.
 

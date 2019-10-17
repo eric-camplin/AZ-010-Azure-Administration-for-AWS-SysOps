@@ -48,7 +48,7 @@ The main tasks for this exercise are as follows:
 1. Configure a SubNet Service Endpoint
 1. Create and Configure File Storage
 
-### Task 1: Create a Storage Account with Blob Storage
+### Exercise 1 - Task 1: Create a Storage Account with Blob Storage
 
 **Create storage account variables**
 

@@ -42,7 +42,7 @@ The main tasks for this exercise are as follows:
 1. Add users and groups.
 1. Create a policy restricting software installs.
 
-### Task 1: Task 1: Add users and groups
+### Exercise 1 - Task 1: Add users and groups
 
 **Add User**
 

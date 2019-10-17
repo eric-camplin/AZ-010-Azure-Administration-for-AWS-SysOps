@@ -42,7 +42,7 @@ The main tasks for this exercise are as follows:
 1. Create a Windows virtual machine
 1. Create Linux Debian virtual machines
 
-### Task 1: Create Windows virtual machine
+### Exercise 1 - Task 1: Create Windows virtual machine
 
 * Create an availability set
 * Create Windows Server 2016 DataCenter VM
@@ -295,7 +295,7 @@ The main tasks for this exercise are as follows:
 1. Create autoscale out and autoscale in rules
 1. Test Ubuntu Scale Set (optional)
 
-### Task 1: Create Ubuntu Scale Set
+### Exercise 2 - Task 1: Create Ubuntu Scale Set
 
 **Create a scale set resource group**
 

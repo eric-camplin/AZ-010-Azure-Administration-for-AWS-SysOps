@@ -42,7 +42,7 @@ The main tasks for this exercise are as follows:
 1. Create WestRG resource group using CLI commands
 1. Create EastRG resource group using CLI commands
 
-### Task 1: Open the Cloud Shell
+### Exercise 1 - Task 1: Open the Cloud Shell
 
 **Set subscription in the Azure Cloud Shell**
 
