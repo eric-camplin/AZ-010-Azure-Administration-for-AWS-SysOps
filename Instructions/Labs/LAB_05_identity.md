@@ -48,7 +48,7 @@ The main tasks for this exercise are as follows:
 
 1. Create variable for user domain.
 
-> With email address of eric@contoso.com the command would be `my_domain=ericcontoso.com.onmicrosoft.com`.
+> With email address of eric@contoso.com the command would be `my_domain=ericcontoso.onmicrosoft.com`.
 >
 > * *consult instructor if needed.*
 
