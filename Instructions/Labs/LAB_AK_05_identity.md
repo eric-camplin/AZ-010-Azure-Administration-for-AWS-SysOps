@@ -3,8 +3,9 @@
 ## Instructions
 
 1. Copy the below CLI script into an editor such as notepad
-1. Location section titled `# ----EDIT THESE VALUES Before Running----`
-1. Edit the values so they represent your environment and save the file locally
+   1. Locate section titled `# ----EDIT THESE VALUES Before Running----`
+   1. Edit the values so they represent your environment or there will be **ERRORS**
+   1. save the file locally
 1. Log into the azure portal, open bash Cloud Shell
 1. Check your dependencies are in place (See comments top of script)
 1. Copy the CLI scripts from you local file and paste script into the Bash Cloud Shell
@@ -36,7 +37,7 @@ subscriptionID=[**subscription ID to use for labs**]
 # Create a variable for user domai
 my_domain=[**UsernameEmaildomain.onmicrosoft.com**]
 # Create unique AD User Password
-password_ad_user=sTR0ngP@ssWorD543%*
+password_ad_user=[**sTR0ngP@ssWorD543%**]
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # ----Main Scripts----

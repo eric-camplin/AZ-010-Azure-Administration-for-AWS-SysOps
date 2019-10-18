@@ -72,10 +72,10 @@ my_user_account=AZ010@$my_domain
 2. Create your unique strong password (edit password!).
 
 ```sh
-# Edit password to be unique
+# Edit password to be unique (remove leading "!" or error)
 az ad user create \
     --display-name AZ010Tester \
-    --password sTR0ngP@ssWorD543%* \
+    --password !sTR0ngP@ssWorD543%* \
     --user-principal-name $my_user_account
 ```
 
