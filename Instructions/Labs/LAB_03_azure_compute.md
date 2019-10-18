@@ -52,13 +52,13 @@ The main tasks for this exercise are as follows:
 
 1. At the **Cloud Shell** command prompt, type in the following command and press **Enter** to prepare variables for use in the following scripts.
 
-> **Note**: create a Unique Password and write it down
+> **Note**: create a Unique Password and write it down (remove leading "!" of password or there will be an error)
 
 ```sh
 resourceGroupName='WestRG'
 location='westus'
 adminUserName='azuser'
-adminPassword='UniqueP@$$w0rd-Here' # make unique
+adminPassword=!'UniqueP@$$w0rd-Here' # remove "!" or error + make unique
 vmName='WestWinVM'
 vmSize='Standard_D1'
 availabilitySet='WestAS'
@@ -270,6 +270,7 @@ ssh azuser@<PUBLIC IP address of West Debian VM>
 > *This should work since both are on the same **private** VNet*
 
 1. Use the WestWinVM IP address to edit the following command and type in the cloud shell SSH session to ping the WestWinVM.
+1. **`ctrl+c`** to end ping in bash (ssh session)
 
 ```sh
 ping <PRIVATE IP address of the Windows server>
@@ -280,6 +281,8 @@ ping <PRIVATE IP address of the Windows server>
 1. Use the EastDebianVM IP address to edit the following command and type in the cloud shell SSH session to ping the WestWinVM.
 
 > *This should work due to previously configured VNet peering*
+
+2. **`ctrl+c`** to end ping in bash (ssh session)
 
 ```sh
 ping <PRIVATE IP address of eastdebianvm>

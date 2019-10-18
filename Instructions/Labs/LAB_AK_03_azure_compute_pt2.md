@@ -3,8 +3,7 @@
 ## Instructions
 
 1. Copy the below CLI script into an editor such as notepad
-1. Location section titled `# ----EDIT THESE VALUES Before Running----`
-1. Edit the values so they represent your environment and save the file locally
+   1. Save the file locally
 1. Log into the azure portal, open bash Cloud Shell
 1. Copy the CLI scripts from you local file and paste script into the Bash Cloud Shell
 1. Some tasks can take more than 1 minute, wait for script to complete and review output

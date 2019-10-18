@@ -3,8 +3,9 @@
 ## Instructions
 
 1. Copy the below CLI script into an editor such as notepad
-1. Location section titled `# ----EDIT THESE VALUES Before Running----`
-1. Edit the values so they represent your environment and save the file locally
+      1. Locate section titled `# ----EDIT THESE VALUES Before Running----`
+      1. Edit the Password or it will cause an **ERROR** and save the CLI commands file
+      1. Save the file locally
 1. Log into the azure portal, open bash Cloud Shell
 1. Check your dependencies are in place (See comments top of script)
 1. Copy the CLI scripts from you local file and paste script into the Bash Cloud Shell
@@ -25,11 +26,12 @@
 
 # ----------START----------
 
-# ----EDIT THESE VALUES to be unique Before Running----
-adminUserName='azuser'
-adminPassword='UniqueP@$$w0rd-Here'
+# ----EDIT THESE VALUES to be UNIQUE Before Running----
+#----remove leading "!" of password or there will be an ERROR----
+adminPassword=!'UniqueP@$$w0rd-Here'
 
 # ----Set Variables----
+adminUserName='azuser'
 resourceGroupName='WestRG'
 location='westus'
 vmName='WestWinVM'
@@ -52,6 +54,9 @@ az vm create --name $vmName --resource-group $resourceGroupName \
   --location $location \
   --size $vmSize \
   --availability-set $availabilitySet
+
+# wait a minute for VM
+sleep 60
 
 # ----open ports----
 az vm open-port -g WestRG -n $vmName --port 80 --priority 1500
