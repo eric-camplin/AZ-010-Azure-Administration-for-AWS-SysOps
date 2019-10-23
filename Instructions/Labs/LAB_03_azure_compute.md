@@ -201,7 +201,6 @@ az vm availability-set create --name EastAS --resource-group EastRG
 ```sh
 az vm create \
 --image credativ:Debian:8:latest \
---size 'Standard_D1' \
 --admin-username azuser \
 --resource-group EastRG \
 --vnet-name EastVNet \
