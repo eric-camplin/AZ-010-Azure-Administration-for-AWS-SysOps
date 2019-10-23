@@ -92,7 +92,6 @@ az vm create \
 --vnet-name WestVNet \
 --subnet WestSubnet1 \
 --availability-set WestAS \
---size 'Standard_D1' \
 --location westus \
 --name WestDebianVM \
 --generate-ssh-keys
