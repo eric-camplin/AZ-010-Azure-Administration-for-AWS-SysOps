@@ -129,6 +129,7 @@ myUploadPath=/home/$az_user_name/uploadfiles
 
 # Upload html files in path
 az storage blob upload-batch -d $container_name \
+-s $myUploadPath -o table
 
 #----Create the upload Path and folder----
 mkdir downloadfiles
