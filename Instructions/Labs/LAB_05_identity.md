@@ -147,7 +147,7 @@ az policy definition create --name 'require-sqlserver-version12' \
 ```sh
 az policy assignment create --name SQL12AZ010 \
     --display-name 'Require SQL Server version 12.0 - subscription scope' \
-    --scope '/subscriptions/546bf0c4-dead-4700-9ea0-a8fd36bdbc5e' \
+    --scope '/subscriptions/'$subscriptionID \
     --policy 'require-sqlserver-version12'
 ```
 
@@ -160,7 +160,7 @@ az policy assignment list
 4. Show your newly created policy.
 
 ```sh
-az policy assignment show --name require-sqlserver-version12
+az policy assignment show --name 'SQL12AZ010'
 ```
 
 **Check for Compliance**
