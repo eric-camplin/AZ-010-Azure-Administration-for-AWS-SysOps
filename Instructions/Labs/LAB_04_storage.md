@@ -68,7 +68,7 @@ my_resource_group=WestRG
 location=westus
 my_storage_account=weststore$myRand
 my_storage_sku=Standard_RAGRS # default
-my_storage_kind=StorageV2myRand
+my_storage_kind=StorageV2
 my_access_tier=hot
 my_storage_encryption=blob
 
