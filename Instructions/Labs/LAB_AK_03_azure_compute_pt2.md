@@ -71,7 +71,7 @@ az vmss list-instance-connection-info \
 --resource-group EastScaleRG \
 --name EastUbuntuServers
 
-# *********************************************************************************
+# *******************************MANUAL-STEPS**************************************
 # ---- use the above output to Connect to Ubuntu scale set instance 0 using SSH----
 # ---- Go to LAB03 EXERCISE2 TASK2 and complete steps to
 # ----     * install/run stress
@@ -80,13 +80,10 @@ az vmss list-instance-connection-info \
 
 # ----Clean up Scale Set Demo by running below CLI command----
 # az group delete --name EastScaleRG --yes --no-wait
-```
-
-> To run the final optional task to test the Ubuntu scale set
-> **Capture the final above connection info output to Connect to Ubuntu scale set instance 0 using SSH**
-> Then go to LAB03 EXERCISE2 TASK2 and complete steps to
->
-> * install/run stress
-> * view scaling
-> * clean up scale set
->
+#
+# To run the final optional task to test the Ubuntu scale set
+# **Capture the final above connection info output to Connect to # Ubuntu scale set instance 0 using SSH**
+# Then go to LAB03 EXERCISE2 TASK2 and complete steps to
+# * install/run stress
+# * view scaling
+# * clean up scale set
