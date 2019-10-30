@@ -111,8 +111,10 @@ EastVNetId=$(az network vnet show \
   --resource-group EastRG \
   --name EastVNet \
   --query id --out tsv)
+```
 
-  echo "EastVNetId = " $EastVNetId
+```sh
+echo "EastVNetId = " $EastVNetId
 ```
 
 3. Type in the following command to peer WestVNet to EastVNet
