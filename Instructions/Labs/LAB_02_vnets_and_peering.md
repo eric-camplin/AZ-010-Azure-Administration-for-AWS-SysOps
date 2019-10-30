@@ -53,7 +53,7 @@ az network vnet create \
   --subnet-prefix 10.1.0.0/24
 ```
 
-2. Verify West Network and Subnet was created.
+2. Verify West Network (WestVNet) was created.
 
 ```sh
 az network vnet list --output table
